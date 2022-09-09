@@ -1,6 +1,7 @@
 //jshint esversion:6
 const express = require("express");
 const bodyParser = require("body-parser");
+const { request } = require("express");
 const app = express();
 const date = require(__dirname + "/date.js");
 /*aqui estamos requiriendo el modulo dentro del archivo date.js y como no es algo que deba enviarse
@@ -51,6 +52,14 @@ app.get("/about", function(req, res) {
     res.render('about');
 });
 
+app.get("/about/:Carnet", function(request, res) {
+    data={
+        Carnet:request.params.carnet,
+         nombre:'Vinicio Alonso',  
+         apellidos:'Sibrian Vargas'
+        }
+    res.render('about',data );
+});
 
 app.listen(3000, function() {
     console.log("Everything ok");
